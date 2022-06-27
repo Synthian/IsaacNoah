@@ -1,7 +1,7 @@
 local Helper = include("Helper")
 local Deluge = {}
 
-CollectibleType.COLLECTIBLE_DELUGE = Isaac.GetItemIdByName("Deluge")
+SynthCollectibleType.COLLECTIBLE_DELUGE = Isaac.GetItemIdByName("Deluge")
 local uses = 0
 
 function Deluge.Use(player)
