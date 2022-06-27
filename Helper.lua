@@ -22,4 +22,12 @@ function Helper.TableLength(table)
   return length
 end
 
+function Helper.TearDelayToFireRate(delay)
+  return 30 / (delay + 1)
+end
+
+function Helper.FireRateToTearDelay(rate)
+  return math.max((30 / rate) - 1, -0.75)
+end
+
 return Helper

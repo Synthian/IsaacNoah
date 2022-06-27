@@ -32,7 +32,8 @@ end
 
 function NoahCharacter.ModifyStats(player, cacheFlag)
   if player:GetPlayerType() == SynthPlayerType.PLAYER_NOAH and waterActive and cacheFlag == CacheFlag.CACHE_FIREDELAY then
-    player.MaxFireDelay = player.MaxFireDelay * 0.75
+    local newRate = Helper.TearDelayToFireRate(player.MaxFireDelay) * 1.25
+    player.MaxFireDelay = Helper.FireRateToTearDelay(newRate)
   end
 end
 
