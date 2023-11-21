@@ -1,7 +1,7 @@
 local Helper = include("Helper")
 local NoahCharacter = {}
 
-SynthPlayerType.PLAYER_NOAH = Isaac.GetPlayerTypeByName("Noah")
+SynthPlayerType.PLAYER_NOAH = Isaac.GetPlayerTypeByName("Noah_Synth")
 -- local noahCostume = Isaac.GetCostumeIdByPath("gfx/characters/noah.anm2")
 
 local waterActive = false

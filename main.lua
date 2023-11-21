@@ -6,45 +6,45 @@ SynthPlayerType = {}
 local Deluge = include("Deluge")
 local NoahCharacter = include("NoahCharacter")
 local json = include("json")
-local Noah = RegisterMod("Noah", 1)
+local Noah_Synth = RegisterMod("Noah_Synth", 1)
 
 -- # POST GAME START #
-function Noah:StartRun(isContinued)
+function Noah_Synth:StartRun(isContinued)
   NoahCharacter.Reset(isContinued)
 end
-Noah:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, Noah.StartRun)
+Noah_Synth:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, Noah_Synth.StartRun)
 
 -- # POST PLAYER INIT #
-function Noah:PlayerInit(player)
+function Noah_Synth:PlayerInit(player)
   if player:GetPlayerType() == SynthPlayerType.PLAYER_NOAH then
     NoahCharacter.AddCostume(player)
     NoahCharacter.AddPocketItem(player)
   end
 end
-Noah:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, Noah.PlayerInit)
+Noah_Synth:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, Noah_Synth.PlayerInit)
 
 -- # STAT CACHE CALLBACK #
-function Noah:ModifyStats(player, cacheFlag)
+function Noah_Synth:ModifyStats(player, cacheFlag)
   NoahCharacter.ModifyStats(player, cacheFlag)
 end
-Noah:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, Noah.ModifyStats)
+Noah_Synth:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, Noah_Synth.ModifyStats)
 
 -- # Update Noah Effects #
-function Noah:NoahEffectUpdate(player)
+function Noah_Synth:NoahEffectUpdate(player)
   NoahCharacter.WaterBuff(player)
 end
-Noah:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, Noah.NoahEffectUpdate, SynthPlayerType.PLAYER_NOAH)
+Noah_Synth:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, Noah_Synth.NoahEffectUpdate, SynthPlayerType.PLAYER_NOAH)
 
 -- # DELUGE USAGE #
-function Noah:UseDeluge(collectibleType, RNG, player, useFlags, slot)
+function Noah_Synth:UseDeluge(collectibleType, RNG, player, useFlags, slot)
   return Deluge.Use(player)
 end
-Noah:AddCallback(ModCallbacks.MC_USE_ITEM, Noah.UseDeluge, SynthCollectibleType.COLLECTIBLE_DELUGE)
+Noah_Synth:AddCallback(ModCallbacks.MC_USE_ITEM, Noah_Synth.UseDeluge, SynthCollectibleType.COLLECTIBLE_DELUGE)
 
 -- # DEBUG COMMANDS #
-function Noah:OnCommand(command, args)
+function Noah_Synth:OnCommand(command, args)
   if command == "check_water" then
     print(Game():GetRoom():HasWater())
   end
 end
-Noah:AddCallback(ModCallbacks.MC_EXECUTE_CMD, Noah.OnCommand)
+Noah_Synth:AddCallback(ModCallbacks.MC_EXECUTE_CMD, Noah_Synth.OnCommand)

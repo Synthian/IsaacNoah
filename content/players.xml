@@ -1,17 +1,24 @@
 <players root="gfx/characters/costumes/" 
-         portraitroot="gfx/ui/boss/" 
-         nameimageroot="gfx/ui/boss/" 
-         bigportraitroot="gfx/ui/stage/">
-  <player name="Noah" hp="2" armor="2"
+        portraitroot="gfx/ui/boss/" 
+        nameimageroot="gfx/ui/boss/" 
+        bigportraitroot="gfx/ui/stage/">
+  <player name="Noah_Synth" hp="2" armor="2"
+          skin="character_001b_isaac_blue.png"
+          nameimage="Noah"
+          portrait="Noah"
+          skinColor="2"
           nameimage="name.png" 
           portrait="noah.png" 
           bigportrait="noah.png"
-          costumeSuffix="noah"
-          birthright="UNIMPLEMENTED" />
-  <player name="Noah" hp="2" armor="2" bSkinParent="Noah"
+          birthright="UNIMPLEMENTED"
+          />
+  <player name="Noah_Synth" hp="2" armor="2" bSkinParent="Noah_Synth"
+          nameimage="Noah"
+          portrait="Noah"
+          skinColor="2"
           nameimage="name.png" 
           portrait="tainted_noah.png" 
           bigportrait="tainted_noah.png"
-          costumeSuffix="noah"
-          birthright="UNIMPLEMENTED" />
+          birthright="UNIMPLEMENTED"
+          />
 </players>
