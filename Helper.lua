@@ -30,4 +30,17 @@ function Helper.FireRateToTearDelay(rate)
   return math.max((30 / rate) - 1, -0.75)
 end
 
+function Helper.PlayerFromTear(tear)
+  local parent = tear.Parent
+  if not parent then return nil end
+
+  if parent:ToPlayer() then
+    return parent:ToPlayer()
+  elseif parent:ToFamiliar() and parent.Variant == FamiliarVariant.FATES_REWARD then
+    return parent:ToFamiliar().Player
+  else
+    return nil
+  end
+end
+
 return Helper

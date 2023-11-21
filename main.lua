@@ -4,6 +4,7 @@ SynthPlayerType = {}
 
 -- Import all modules
 local Deluge = include("Deluge")
+local ShepherdCrook = include("ShepherdCrook")
 local NoahCharacter = include("NoahCharacter")
 local json = include("json")
 local Noah_Synth = RegisterMod("Noah_Synth", 1)
@@ -22,6 +23,12 @@ function Noah_Synth:PlayerInit(player)
   end
 end
 Noah_Synth:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, Noah_Synth.PlayerInit)
+
+-- # POST TEAR UPDATE #
+function Noah_Synth:PostTearUpdate(tear, variant)
+  ShepherdCrook.ApplyTearEffect(tear, variant)
+end
+Noah_Synth:AddCallback(ModCallbacks.MC_POST_TEAR_UPDATE, Noah_Synth.PostTearUpdate)
 
 -- # STAT CACHE CALLBACK #
 function Noah_Synth:ModifyStats(player, cacheFlag)
