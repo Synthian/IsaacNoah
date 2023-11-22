@@ -37,7 +37,7 @@ function Deluge.Use(player)
     end
   end
 
-  -- Charm enemies, execute Flush!, uncharm enemies
+  -- Mark enemies as friendly, execute Flush!, uncharm enemies
   for i, entity in ipairs(survivors) do
     entity:AddEntityFlags(EntityFlag.FLAG_FRIENDLY)
   end

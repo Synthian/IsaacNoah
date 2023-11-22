@@ -26,9 +26,15 @@ Noah_Synth:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, Noah_Synth.PlayerInit)
 
 -- # POST TEAR UPDATE #
 function Noah_Synth:PostTearUpdate(tear, variant)
-  ShepherdCrook.ApplyTearEffect(tear, variant)
+  ShepherdCrook.InitializeTears(tear, variant)
 end
 Noah_Synth:AddCallback(ModCallbacks.MC_POST_TEAR_UPDATE, Noah_Synth.PostTearUpdate)
+
+-- # ENTITY TAKE DAMAGE #
+function Noah_Synth:EntityTakeDamage(entity, amount, flags, source, countdownFrames, entityType)
+  ShepherdCrook.RunCleaverEffect(entity, source)
+end
+Noah_Synth:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, Noah_Synth.EntityTakeDamage)
 
 -- # STAT CACHE CALLBACK #
 function Noah_Synth:ModifyStats(player, cacheFlag)
