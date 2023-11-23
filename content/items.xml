@@ -1,3 +1,4 @@
 <items gfxroot="gfx/items/" version="1">
 	<active name="Deluge" description="Survive the flood" gfx="Deluge.png" maxcharges="3" quality="1" />
+	<passive name="Shepherd's Crook" description="Be fruitful and multiply" gfx="Crook.png" quality="3" />
 </items>

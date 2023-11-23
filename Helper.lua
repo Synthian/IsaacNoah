@@ -30,17 +30,39 @@ function Helper.FireRateToTearDelay(rate)
   return math.max((30 / rate) - 1, -0.75)
 end
 
-function Helper.PlayerFromTear(tear)
-  local parent = tear.Parent
-  if not parent then return nil end
 
-  if parent:ToPlayer() then
-    return parent:ToPlayer()
-  elseif parent:ToFamiliar() and parent.Variant == FamiliarVariant.FATES_REWARD then
-    return parent:ToFamiliar().Player
+local TEAR_EFFECT_FAMILIARS = {
+  [FamiliarVariant.FATES_REWARD] = true,
+  [FamiliarVariant.INCUBUS] = true,
+  [FamiliarVariant.TWISTED_BABY] = true,
+  [FamiliarVariant.CAINS_OTHER_EYE] = true,
+  [FamiliarVariant.SPRINKLER] = true,
+  [FamiliarVariant.BLOOD_BABY] = true,
+  [FamiliarVariant.UMBILICAL_BABY] = true
+}
+function Helper.PlayerFromDamageSource(source)
+  if source:ToPlayer() then return source:ToPlayer() end
+  if source.Parent and source.Parent:ToPlayer() then return source.Parent:ToPlayer() end
+
+  local familiar = nil
+  if source:ToFamiliar() then
+    familiar = source:ToFamiliar()
+  elseif source.Parent and source.Parent:ToFamiliar() then
+    familiar = source.Parent:ToFamiliar()
   else
     return nil
   end
+
+  -- Isaac.ConsoleOutput("[PlayerFromDamageSource] Variant: " .. familiar.Variant .. "\n")
+  if TEAR_EFFECT_FAMILIARS[familiar.Variant] then
+    return familiar:ToFamiliar().Player
+  else
+    return nil
+  end
+end
+
+function Helper.Ternary (cond, T, F)
+  if cond then return T else return F end
 end
 
 return Helper
